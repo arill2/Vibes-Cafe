@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cafe - Ngopi, Ngecas, Nge-vibes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b9d, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b9d;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b9d, #a855f7);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff6b9d 0%, #a855f7 50%, #3b82f6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff10" points="0,1000 1000,0 1000,1000"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b9d, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title-makanan {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b9d, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #ff6b9d;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .menu-item .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .about-content {
+            display: grid;
+               grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+        }
+
+        .contact-item strong {
+            width: 120px;
+            color: #ff6b9d;
+            font-weight: 600;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 1rem;
+            background: linear-gradient(45deg, #ff6b9d, #a855f7);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        footer .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b9d, #a855f7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b9d, #a855f7);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #a855f7, #3b82f6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Vibes Café</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Vibes Café</h1>
+            <p class="tagline">Ngopi, Ngecas, Nge-vibes ✨</p>
+            <a href="#menu" class="cta-button">Lihat Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu section">
+        <h2 class="section-title">Menu Favorit</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Kopi Aesthetic">
+                <h3>Aesthetic Latte</h3>
+                <div class="price">Rp 25.000</div>
+                <p>Latte art yang bikin feed Instagram kamu makin aesthetic! Perfect buat foto OOTD sambil ngopi.</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1854652/pexels-photo-1854652.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Matcha Latte">
+                <h3>Matcha Vibes</h3>
+                <div class="price">Rp 28.000</div>
+                <p>Matcha creamy yang bikin mood instantly happy. Cocok buat healing session sambil scroll TikTok.</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1907642/pexels-photo-1907642.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pink Drink">
+                <h3>Pink Dreams</h3>
+                <div class="price">Rp 30.000</div>
+                <p>Minuman pink yang super photogenic! Kombinasi strawberry dan rose yang bikin hati berbunga.</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1126359/pexels-photo-1126359.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Croissant">
+                <h3>Croffle Craze</h3>
+                <div class="price">Rp 22.000</div>
+                <p>Croissant waffle yang crispy dan fluffy. Perfect pair sama kopi pagi buat start the day right!</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1414234/pexels-photo-1414234.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Smoothie Bowl">
+                <h3>Smoothie Bowl Delight</h3>
+                <div class="price">Rp 35.000</div>
+                <p>Bowl yang colorful dengan topping super lengkap. Healthy vibes yang bikin semangat workout!</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/851555/pexels-photo-851555.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Ice Coffee">
+                <h3>Cold Brew Supreme</h3>
+                <div class="price">Rp 27.000</div>
+                <p>Es kopi yang strong dan smooth. Perfect buat ngerjain tugas atau meeting online yang panjang.</p>
+            </div>
+        </div>
+<!-- section mkanan -->
+        <div>
+            <h2 class="section-title-makanan">Makanan Favorit</h2>
+            <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ice Coffee">
+                 <h3>Salad Buah-Buahan</h3>
+    <div class="price">Rp 18.000</div>
+    <p>Segar dan manis kayak first love. Pas banget buat nemenin healing tipis-tipis.</p>
+            </div>
+            <br>
+             <div class="menu-item">
+                <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg" alt="Ice Coffee">
+                 <h3>Sweet Pancake</h3>
+    <div class="price">Rp 22.000</div>
+    <p>Lembut, manis, dan bikin senyum tanpa alasan. Vibes-nya kayak dengerin lagu favorit jam 2 pagi.</p>
+            </div>
+            <br>
+             <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg" alt="Ice Coffee">
+                <h3>Italian Spaghetti</h3>
+    <div class="price">Rp 30.000</div>
+    <p>Sausnya nendang, pastanya pas. Rasanya kayak dia: nggak ribet tapi bikin kangen.</p>
+            </div>
+            <br>
+             <div class="menu-item">
+                <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg" alt="Ice Coffee">
+               <h3>Steak Wagyu</h3>
+    <div class="price">Rp 65.000</div>
+    <p>Daging premium yang juicy banget. Pas buat self-reward setelah survive satu minggu penuh.</p>
+            </div>
+            <br>
+             <div class="menu-item">
+                <img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg" alt="Ice Coffee">
+                  <h3>Burger</h3>
+    <div class="price">Rp 28.000</div>
+    <p>Patty-nya tebal, rotinya empuk. Ini comfort food level dewa buat hari-hari penuh tugas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <h2 class="section-title">Tentang Vibes Café</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Your Go-To Place for Good Vibes ✨</h3>
+                <p>
+                    Vibes Café adalah tempat yang diciptakan khusus buat generasi yang ngerti lifestyle modern. 
+                    Di sini, kamu bisa ngopi sambil charging HP, kerja remote dengan WiFi super kenceng, 
+                    atau sekadar nongkrong sama squad sambil nge-vibes.
+                </p>
+                <p>
+                    Kami punya aesthetic yang Instagram-worthy, menu yang bikin nagih, dan vibes yang bikin 
+                    kamu pengen balik lagi dan lagi. From morning coffee run sampe late night study session, 
+                    we got you covered!
+                </p>
+            </div>
+            <div class="about-features">
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h4>Power Outlet Everywhere</h4>
+                    <p>Charging station di setiap meja buat gadget kamu</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📶</div>
+                    <h4>Super Fast WiFi</h4>
+                    <p>Internet kenceng buat streaming, gaming, atau video call</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📸</div>
+                    <h4>Aesthetic Spots</h4>
+                    <p>Corner-corner cantik yang perfect buat konten</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎵</div>
+                    <h4>Chill Playlist</h4>
+                    <p>Musik yang bikin mood naik dan produktivitas on point</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <h2 class="section-title">Come & Hang Out!</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>📍 Lokasi & Info</h3>
+                <div class="contact-item">
+                    <strong>Alamat:</strong>
+                    <span>Jl. Kepo Street No. 123, Kawasan Hits, Sulawesi Selatan</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Jam Buka:</strong>
+                    <span>07:00 - 23:00 (Every Day)</span>
+                </div>
+                <div class="contact-item">
+                    <strong>WhatsApp:</strong>
+                    <span>+62 812-3456-7890</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <span>hello@vibescafe.id</span>
+                </div>
+                
+                <div class="social-media">
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">TT</a>
+                    <a href="#" class="social-link">YT</a>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3>🚀 Follow Our Socials</h3>
+                <div class="contact-item">
+                    <strong>Instagram:</strong>
+                    <span>@vibescafe.id</span>
+                </div>
+                <div class="contact-item">
+                    <strong>TikTok:</strong>
+                    <span>@vibescafe</span>
+                </div>
+                <div class="contact-item">
+                    <strong>YouTube:</strong>
+                    <span>Vibes Café Official</span>
+                </div>
+                <p style="margin-top: 1rem; font-style: italic; color: #666;">
+                    Follow us buat update menu terbaru, event seru, dan daily vibes yang bikin hari kamu lebih ceria! ✨
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo">Vibes Café</div>
+        <p>Where Good Vibes Meet Great Coffee ☕✨</p>
+        <p>&copy; 2024 Vibes Café. Made with 💕 for Gen Z</p>
+    </footer>
+</body>
+</html>
